@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Background from './components/Background';
+import QuestMap from './components/QuestMap';
 import Screen1 from './components/Screen1';
 import Screen2 from './components/Screen2';
 import Screen3 from './components/Screen3';
@@ -24,8 +25,11 @@ function App() {
       {/* Background layer */}
       <Background isVibrant={currentScreen === 2 || currentScreen === 10} />
 
+      {/* Quest Map Navigation */}
+      <QuestMap currentScreen={currentScreen} />
+
       {/* Main Content Area */}
-      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center">
+      <main className="relative z-10 flex-1 flex flex-col justify-center items-center">
         {currentScreen === 1 && <Screen1 onAccept={nextScreen} />}
         {currentScreen === 2 && <Screen2 onNext={nextScreen} />}
         {currentScreen === 3 && <Screen3 onNext={nextScreen} />}
