@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import Background from './components/Background';
 import WorldMapScreen from './components/WorldMapScreen';
 import Screen1 from './components/Screen1';
-import Screen2 from './components/Screen2';
-import Screen3 from './components/Screen3';
-import Screen4 from './components/Screen4';
-import Screen5 from './components/Screen5';
-import Screen6 from './components/Screen6';
-import Screen7 from './components/Screen7';
+import HeartCatcherGame from './components/HeartCatcherGame';
+import MemoryMatchGame from './components/MemoryMatchGame';
+import FoodQuestGame from './components/FoodQuestGame';
 import ObstacleGame from './components/ObstacleGame';
 import Screen8 from './components/Screen8';
 import Screen9 from './components/Screen9';
@@ -18,16 +15,15 @@ function App() {
   const [unlockedLevel, setUnlockedLevel] = useState(1);
   const [viewMode, setViewMode] = useState('stage'); // 'map' or 'stage'
   const [foodChoice, setFoodChoice] = useState('');
+  const [isFinalCelebration, setIsFinalCelebration] = useState(false);
 
   const nextScreen = () => {
     const nextLevel = currentScreen + 1;
-    if (nextLevel <= 10) {
+    if (nextLevel <= 6) {
       if (nextLevel > unlockedLevel) {
         setUnlockedLevel(nextLevel);
       }
       setCurrentScreen(nextLevel);
-      // Return to map screen between stages so player sees progress on the map
-      setViewMode('map');
     }
   };
 
@@ -42,14 +38,14 @@ function App() {
   return (
     <div className="min-h-screen relative font-sans text-slate-800 antialiased overflow-x-hidden flex flex-col">
       {/* Background layer */}
-      <Background isVibrant={currentScreen === 2 || currentScreen === 10} />
+      <Background isVibrant={currentScreen === 6 || isFinalCelebration} />
 
       {/* Top Header Navigation */}
       <header className="relative z-30 w-full max-w-4xl mx-auto px-4 pt-4 flex justify-between items-center font-mono">
         <div className="flex items-center gap-2 bg-slate-950/80 border border-purple-500/50 rounded-lg px-3 py-1.5 backdrop-blur-md">
           <Gamepad2 className="w-4 h-4 text-pink-400" />
           <span className="text-xs font-['Press_Start_2P',monospace] text-purple-300">
-            {viewMode === 'map' ? 'MAP VIEW' : `STAGE ${currentScreen}`}
+            {viewMode === 'map' ? 'MAP VIEW' : `STAGE ${currentScreen}/6`}
           </span>
         </div>
 
@@ -74,23 +70,26 @@ function App() {
         ) : (
           <>
             {currentScreen === 1 && <Screen1 onAccept={nextScreen} />}
-            {currentScreen === 2 && <Screen2 onNext={nextScreen} />}
-            {currentScreen === 3 && <Screen3 onNext={nextScreen} />}
-            {currentScreen === 4 && <Screen4 onNext={nextScreen} />}
-            {currentScreen === 5 && <Screen5 onNext={nextScreen} />}
-            {currentScreen === 6 && (
-              <Screen6
+            {currentScreen === 2 && <HeartCatcherGame onNext={nextScreen} />}
+            {currentScreen === 3 && <MemoryMatchGame onNext={nextScreen} />}
+            {currentScreen === 4 && (
+              <FoodQuestGame
                 foodChoice={foodChoice}
                 setFoodChoice={setFoodChoice}
                 onNext={nextScreen}
               />
             )}
-            {currentScreen === 7 && <Screen7 onNext={nextScreen} />}
-            {currentScreen === 8 && <ObstacleGame onNext={nextScreen} />}
-            {currentScreen === 9 && (
-              <Screen8 foodChoice={foodChoice} onFinalAccept={nextScreen} />
+            {currentScreen === 5 && <ObstacleGame onNext={nextScreen} />}
+            {currentScreen === 6 && (
+              !isFinalCelebration ? (
+                <Screen8
+                  foodChoice={foodChoice}
+                  onFinalAccept={() => setIsFinalCelebration(true)}
+                />
+              ) : (
+                <Screen9 foodChoice={foodChoice} />
+              )
             )}
-            {currentScreen === 10 && <Screen9 foodChoice={foodChoice} />}
           </>
         )}
       </main>

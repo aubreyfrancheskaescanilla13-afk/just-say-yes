@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { Play, CheckCircle2, Lock, Sparkles, MapPin } from 'lucide-react';
+import { Play, CheckCircle2, Lock, Sparkles, MapPin, Gamepad2 } from 'lucide-react';
 
 export default function WorldMapScreen({ currentLevel, unlockedLevel, onSelectLevel, onStartLevel }) {
   const [selectedNode, setSelectedNode] = useState(currentLevel);
 
   const stops = [
-    { num: 1, id: 'prompt', label: '1. SYSTEM PROMPT', desc: 'The initial question. Choose wisely!' },
-    { num: 2, id: 'yes', label: '2. QUEST ACCEPTED', desc: 'I knew it! Time to celebrate.' },
-    { num: 3, id: 'song', label: '3. OUR SONG', desc: 'Setting up the date soundtrack.' },
-    { num: 4, id: 'when', label: '4. WHEN', desc: 'Date schedule reveal.' },
-    { num: 5, id: 'where', label: '5. WHERE', desc: 'Location coordinates revealed.' },
-    { num: 6, id: 'food', label: '6. FOOD SELECTION', desc: 'Custom menu request input.' },
-    { num: 7, id: 'quests', label: '7. DATE QUESTS', desc: 'Movies, games, cuddles & sleep.' },
-    { num: 8, id: 'runner', label: '8. OBSTACLE RUNNER', desc: 'Avoid glitches to reach her!' },
-    { num: 9, id: 'final', label: '9. SWEET MESSAGE', desc: 'A sincere personal message.' },
-    { num: 10, id: 'date', label: '10. IT\'S A DATE!', desc: 'Final celebration destination.' },
+    { num: 1, id: 'prompt', label: '1. SYSTEM PROMPT', desc: 'The initial question. Catch the YES button or deal with corrupted NO.' },
+    { num: 2, id: 'hearts', label: '2. HEART CATCHER', desc: 'Mini-Game: Catch falling hearts and music notes to unlock Taylor Swift\'s "Ours" and date details!' },
+    { num: 3, id: 'memory', label: '3. MEMORY MATCH', desc: 'Mini-Game: Match pixel cards to unlock date activities (Movies, Games, Cuddle, Sleep).' },
+    { num: 4, id: 'food', label: '4. FOOD QUEST', desc: 'Mini-Game: Choose and catch your food order for date night.' },
+    { num: 5, id: 'runner', label: '5. OBSTACLE RUNNER', desc: 'Mini-Game: Platform runner! Jump over glitches and spikes to reach her.' },
+    { num: 6, id: 'date', label: '6. FINAL DATE QUEST', desc: 'The final destination! Sweet message & "IT\'S A DATE!" celebration.' },
   ];
 
   const activeStop = stops.find((s) => s.num === selectedNode) || stops[0];
@@ -34,8 +30,9 @@ export default function WorldMapScreen({ currentLevel, unlockedLevel, onSelectLe
               WORLD MAP
             </h1>
           </div>
-          <div className="text-xs font-['Silkscreen',sans-serif] text-purple-300 bg-purple-950/80 border border-purple-800/80 px-3 py-1.5 rounded-full">
-            PROGRESS: STAGE {unlockedLevel}/10
+          <div className="text-xs font-['Silkscreen',sans-serif] text-purple-300 bg-purple-950/80 border border-purple-800/80 px-3 py-1.5 rounded-full flex items-center gap-2">
+            <Gamepad2 className="w-4 h-4 text-pink-400" />
+            STAGES UNLOCKED: {unlockedLevel}/6
           </div>
         </div>
 
@@ -45,10 +42,10 @@ export default function WorldMapScreen({ currentLevel, unlockedLevel, onSelectLe
           <div className="absolute inset-0 bg-[radial-gradient(#3b0764_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none"></div>
 
           {/* Connected Path Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 relative z-10">
             {stops.map((stop) => {
               const isBoyHere = currentLevel === stop.num;
-              const isGirlHere = stop.num === 10;
+              const isGirlHere = stop.num === 6;
               const stopLocked = stop.num > unlockedLevel;
               const stopCompleted = stop.num < unlockedLevel;
               const isSelected = selectedNode === stop.num;
@@ -57,7 +54,7 @@ export default function WorldMapScreen({ currentLevel, unlockedLevel, onSelectLe
                 <button
                   key={stop.num}
                   onClick={() => setSelectedNode(stop.num)}
-                  className={`relative p-3 rounded-xl border-2 flex flex-col items-center justify-between min-h-[100px] transition-all duration-300 cursor-pointer ${
+                  className={`relative p-4 rounded-xl border-2 flex flex-col items-center justify-between min-h-[120px] transition-all duration-300 cursor-pointer ${
                     isSelected
                       ? 'border-pink-400 bg-purple-900/60 shadow-[0_0_20px_rgba(236,72,153,0.6)] scale-105'
                       : stopLocked
@@ -79,7 +76,7 @@ export default function WorldMapScreen({ currentLevel, unlockedLevel, onSelectLe
                     </div>
                   )}
 
-                  {/* Girl Sprite Overlay if at Stop 10 */}
+                  {/* Girl Sprite Overlay if at Stop 6 */}
                   {isGirlHere && (
                     <div className="absolute -top-3 right-2 z-20 flex flex-col items-center">
                       <div className="w-6 h-6 bg-pink-600 border border-pink-300 rounded-sm shadow-[0_0_10px_rgba(236,72,153,0.9)] flex flex-col items-center justify-between p-0.5">
@@ -108,13 +105,13 @@ export default function WorldMapScreen({ currentLevel, unlockedLevel, onSelectLe
                   </div>
 
                   {/* Level Label */}
-                  <span className="text-[11px] font-['VT323',monospace] tracking-wider text-slate-200 text-center line-clamp-2 my-auto">
+                  <span className="text-[12px] font-['VT323',monospace] tracking-wider text-slate-200 text-center line-clamp-2 my-auto font-bold">
                     {stop.label}
                   </span>
 
                   {/* Node Status Dot */}
                   <div
-                    className={`w-2.5 h-2.5 rounded-full mt-1 ${
+                    className={`w-2.5 h-2.5 rounded-full mt-2 ${
                       stopCompleted
                         ? 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]'
                         : isBoyHere
