@@ -7,6 +7,7 @@ import Screen4 from './components/Screen4';
 import Screen5 from './components/Screen5';
 import Screen6 from './components/Screen6';
 import Screen7 from './components/Screen7';
+import ObstacleGame from './components/ObstacleGame';
 import Screen8 from './components/Screen8';
 import Screen9 from './components/Screen9';
 
@@ -21,7 +22,7 @@ function App() {
   return (
     <div className="min-h-screen relative font-sans text-slate-800 antialiased overflow-x-hidden">
       {/* Background layer */}
-      <Background isVibrant={currentScreen === 2 || currentScreen === 9} />
+      <Background isVibrant={currentScreen === 2 || currentScreen === 10} />
 
       {/* Main Content Area */}
       <main className="relative z-10 min-h-screen flex flex-col justify-center items-center">
@@ -38,10 +39,11 @@ function App() {
           />
         )}
         {currentScreen === 7 && <Screen7 onNext={nextScreen} />}
-        {currentScreen === 8 && (
+        {currentScreen === 8 && <ObstacleGame onNext={nextScreen} />}
+        {currentScreen === 9 && (
           <Screen8 foodChoice={foodChoice} onFinalAccept={nextScreen} />
         )}
-        {currentScreen === 9 && <Screen9 foodChoice={foodChoice} />}
+        {currentScreen === 10 && <Screen9 foodChoice={foodChoice} />}
       </main>
     </div>
   );
