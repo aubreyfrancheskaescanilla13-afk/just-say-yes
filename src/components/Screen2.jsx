@@ -41,18 +41,16 @@ const Screen2 = ({ onNext }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center crt-scanlines">
       <div className="game-card rounded-xl p-6 md:p-10 max-w-lg w-full transition-all duration-300">
-        <div className="text-6xl mb-4 animate-bounce">⚔️🎉</div>
-
         <div className="font-pixel text-[10px] md:text-xs text-yellow-300 bg-yellow-950/80 px-3 py-1.5 rounded border border-yellow-500 inline-block mb-3 tracking-widest uppercase">
           CRITICAL HIT! +9999 EXP
         </div>
 
         <h1 className="font-pixel text-xl md:text-2xl text-pink-400 font-bold mb-3 leading-relaxed">
-          QUEST ACCEPTED! 🥹💕
+          QUEST ACCEPTED!
         </h1>
 
         <p className="font-silkscreen text-lg md:text-xl text-purple-200 font-semibold mb-6">
-          I KNEW YOU WOULD CHOOSE YES! 😂💜
+          I KNEW YOU WOULD CHOOSE YES!
         </p>
 
         {showSecondary && (
@@ -63,14 +61,14 @@ const Screen2 = ({ onNext }) => {
               [NPC DIALOGUE]: Okay... jokes aside.
             </p>
             <p className="font-pixel text-sm md:text-base text-pink-300 mb-8 leading-relaxed">
-              I'm actually really happy you said yes. 🥹💕
+              I'm actually really happy you said yes.
             </p>
 
             <button
               onClick={onNext}
               className="pixel-btn bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-pixel px-6 py-4 rounded-lg text-xs md:text-sm cursor-pointer uppercase tracking-wider"
             >
-              💌 NEXT QUEST STEP →
+              NEXT QUEST STEP →
             </button>
           </div>
         )}

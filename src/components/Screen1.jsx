@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const NO_MESSAGES = [
-  'NO 😭',
-  'SYSTEM REJECTED ⚠️',
-  'ARE YOU SURE? 🤖',
-  'ERROR: CHOICE DENIED! ❌',
-  'WHY ARE YOU CHASING ME?! 😭',
-  'STOP TRYING TO CLICK NO! 😂',
-  'JUST CLICK YES 💜',
-  'YOU KNOW YOU WANT TO 👀',
-  'CATCH ME IF YOU CAN ⚡'
+  'NO',
+  'PLEASE DON\'T CLICK ME...',
+  'I\'M BEGGING YOU, CLICK YES!',
+  'PLEASE MERCY! CLICK YES!',
+  'WHY ARE YOU CHASING ME?!',
+  'PLEASE STOP, CLICK YES INSTEAD!',
+  'I\'M BEGGING, JUST CLICK YES',
+  'PLEASE HAVE MERCY ON ME',
+  'OKAY OKAY, PLEASE CLICK YES!'
 ];
 
 const Screen1 = ({ onAccept }) => {
@@ -101,11 +101,11 @@ const Screen1 = ({ onAccept }) => {
         </h1>
 
         <p className="font-silkscreen text-xl md:text-2xl text-purple-200 font-bold mb-6 leading-relaxed">
-          "Will you go on a date with me?" 💕
+          "Will you go on a date with me?"
         </p>
 
         <div className="bg-purple-950/70 p-3.5 rounded-lg border border-purple-500/40 mb-8 text-xs md:text-sm text-purple-300 font-vt tracking-wider">
-          💡 HINT: Choose wisely... Option [YES] boosts Power level! 👀
+          HINT: Choose wisely... Option [YES] boosts Power level!
         </div>
 
         {/* Buttons Container */}
@@ -118,7 +118,7 @@ const Screen1 = ({ onAccept }) => {
             }}
             className="z-20 pixel-btn animate-pulse-glow bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-pixel px-6 py-4 rounded-lg text-sm md:text-base cursor-pointer whitespace-nowrap uppercase tracking-wider"
           >
-            💖 YES [ACCEPT QUEST]
+            YES [ACCEPT QUEST]
           </button>
 
           {/* Initial Inline NO Button */}
@@ -170,13 +170,12 @@ const Screen1 = ({ onAccept }) => {
       {showErrorModal && (
         <div className="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 z-50">
           <div className="game-card-error rounded-xl p-6 md:p-8 max-w-md w-full text-center border-4 border-red-500">
-            <div className="text-4xl mb-3">⚠️</div>
             <h2 className="font-pixel text-lg text-red-400 mb-3 tracking-wider">
               SYSTEM FATAL ERROR
             </h2>
             <div className="bg-red-950/80 border border-red-500/50 p-4 rounded mb-6 text-left font-mono text-xs text-red-200 leading-relaxed">
               <p className="text-yellow-400 font-pixel text-[10px] mb-2">[ERROR CODE: 0xNO_WAY_3000]</p>
-              <p className="mb-2">❌ CHOICE 'NO' IS CORRUPTED AND UNSTABLE.</p>
+              <p className="mb-2">CHOICE 'NO' IS CORRUPTED AND UNSTABLE.</p>
               <p className="text-pink-300">The system rejects this response. 'NO' button engine is malfunctioning!</p>
             </div>
             <button
@@ -186,7 +185,7 @@ const Screen1 = ({ onAccept }) => {
               }}
               className="pixel-btn bg-red-600 hover:bg-red-500 text-white font-pixel text-xs px-6 py-3.5 rounded cursor-pointer uppercase tracking-wider"
             >
-              ⚠️ ACKNOWLEDGE & FIX ERROR
+              ACKNOWLEDGE & FIX ERROR
             </button>
           </div>
         </div>

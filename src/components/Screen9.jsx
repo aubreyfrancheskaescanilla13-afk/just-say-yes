@@ -46,23 +46,21 @@ const Screen9 = ({ foodChoice }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center crt-scanlines">
       <div className="game-card rounded-xl p-6 md:p-10 max-w-lg w-full transition-all duration-300">
-        <div className="text-6xl md:text-7xl mb-4 animate-bounce">🏆💖</div>
-
         <div className="font-pixel text-[10px] md:text-xs text-green-400 bg-green-950/90 px-3 py-1.5 rounded border border-green-500 inline-block mb-3 tracking-widest uppercase animate-pulse">
           ★ ALL QUEST OBJECTIVES COMPLETED ★
         </div>
 
         <h1 className="font-pixel text-xl md:text-2xl font-bold text-pink-400 mb-4 leading-relaxed tracking-wider">
-          IT'S A DATE!!! 🥹💕
+          IT'S A DATE!!!
         </h1>
 
         <p className="font-silkscreen text-lg text-purple-200 font-bold mb-6">
-          NO BACKING OUT NOW. 😂💜
+          NO BACKING OUT NOW.
         </p>
 
         <div className="bg-purple-950/90 p-5 rounded-lg border-2 border-yellow-400 shadow-xl mb-6">
           <p className="font-pixel text-sm md:text-base font-bold text-yellow-300 mb-2">
-            SEE YOU ON SEPTEMBER 9! 🌙💕
+            SEE YOU ON SEPTEMBER 9!
           </p>
           <p className="text-purple-200 font-vt text-sm md:text-base">
             At my house • Night time • {foodChoice ? `Eating ${foodChoice}` : 'Delicious food'}
@@ -70,7 +68,7 @@ const Screen9 = ({ foodChoice }) => {
         </div>
 
         <p className="font-pixel text-xs text-pink-300">
-          GAME OVER: PERFECT ENDING UNLOCKED! 💖
+          GAME OVER: PERFECT ENDING UNLOCKED!
         </p>
       </div>
     </div>

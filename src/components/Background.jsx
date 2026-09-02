@@ -3,12 +3,12 @@ import React, { useMemo } from 'react';
 const Background = ({ isVibrant = false }) => {
   // Generate random particles once
   const particles = useMemo(() => {
-    const items = ['💕', '💖', '✨', '🌸', '🌟', '💜', '💗'];
-    return Array.from({ length: 22 }, (_, index) => {
+    const items = ['✨', '✦', '★', '💜', '💗'];
+    return Array.from({ length: 14 }, (_, index) => {
       const icon = items[index % items.length];
-      const left = Math.floor((index * 4.7) % 100);
-      const size = Math.floor((index % 4) * 6 + 16); // 16px to 34px
-      const duration = Math.floor((index % 5) * 4 + 10); // 10s to 26s
+      const left = Math.floor((index * 7.1) % 100);
+      const size = Math.floor((index % 3) * 4 + 12); // 12px to 20px
+      const duration = Math.floor((index % 5) * 4 + 12); // 12s to 28s
       const delay = Math.floor((index % 7) * 2); // 0s to 12s
       return { id: index, icon, left, size, duration, delay };
     });
